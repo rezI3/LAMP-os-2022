@@ -1,7 +1,7 @@
-<?php
+$<?php
 $dsn = 'mysql:dbname=webapp;host=localhost'; 
-$user = 'webapp';
-$password = '1toK@iji';
+$user = getenv('dbname');
+$password = getenv('dbpass');
 
 try {
 	$dbh = new PDO($dsn, $user, $password);
