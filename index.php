@@ -1,5 +1,5 @@
 $<?php
-$dsn = 'mysql:dbname=webapp;host=localhost'; 
+$dsn = getenv('dsn'); 
 $user = getenv('dbname');
 $password = getenv('dbpass');
 
