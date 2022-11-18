@@ -7,12 +7,14 @@ try {
 	$dbh = new PDO($dsn, $user, $password);
 } catch (PDOException $e) {
         print('Error:'.$e->getMessage());
-        die();
+	print('うまく行っていませんよ-
+		');
+	die();
 }
 
 // POST
 if($_POST['method'] == 'post'){
-        $stmt = $dbh->prepare("INSERT ITON product(name, price) VALUES(:name, :price)");
+        $stmt = $dbh->prepare("INSERT INTO product(name, price) VALUES(:name, :price)");
         $stmt->bindParam(':name',$_POST['name'],PDO::PARAM_STR);
         $stmt->bindParam(':price', $_POST['price'], PDO::PARAM_INT);
         $res = $stmt->execute();
@@ -46,7 +48,8 @@ if ($_POST['method'] == 'delete') {
                 <input type="submit" value="送信">
         </form>
         <?php
-        // GET
+// GET
+	print('<p>$dsn</p>');
         $sql = 'select * from product';
         print('<p>商品名 価格(円)</p>'); 
         foreach ($dbh->query($sql) as $row) { 
